@@ -21,6 +21,25 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './home/home.component';
 import { UiComponent } from './ui/ui.component';
+import { AppsComponent } from './apps/apps.component';
+
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'home'
+  },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'apps',
+    component: AppsComponent
+  }
+]
 
 @NgModule({
   declarations: [
@@ -30,6 +49,7 @@ import { UiComponent } from './ui/ui.component';
     NavMainComponent,
     HomeComponent,
     UiComponent,
+    AppsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +61,11 @@ import { UiComponent } from './ui/ui.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    RouterModule.forRoot(routes)
+  ],
+  exports: [
+    RouterModule
   ],
   providers: [
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
