@@ -5,9 +5,9 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item [routerLink]="['home']" routerLinkActive="active">Link 1</a>
-      <a mat-list-item [routerLink]="['apps']">Link 2</a>
-      <a mat-list-item [routerLink]="['home']">Link 3</a>
+      <a mat-list-item [routerLink]="['home']" routerLinkActive="active">Home</a>
+      <a mat-list-item [routerLink]="['apps']" routerLinkActive="active">Applications</a>
+      <a mat-list-item [routerLink]="['ui']" routerLinkActive="active">UI Elements</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -20,7 +20,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>ui-elements-web</span>
+      <span>Maugh - UI Elements Web</span>
     </mat-toolbar>
     <ng-content></ng-content>
     <!-- Add Content Here -->

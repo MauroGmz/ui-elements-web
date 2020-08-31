@@ -24,6 +24,7 @@ import { UiComponent } from './ui/ui.component';
 import { AppsComponent } from './apps/apps.component';
 
 import { RouterModule, Routes } from '@angular/router';
+import { AddCardsComponent } from './apps/add-cards/add-cards.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: 'apps',
     component: AppsComponent
+  },
+  {
+    path: 'ui',
+    component: UiComponent
   }
 ]
 
@@ -49,7 +54,8 @@ const routes: Routes = [
     NavMainComponent,
     HomeComponent,
     UiComponent,
-    AppsComponent
+    AppsComponent,
+    AddCardsComponent
   ],
   imports: [
     BrowserModule,
