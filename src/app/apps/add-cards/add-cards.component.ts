@@ -1,8 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 
 import { Photo } from '../../models/photo';
 
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+export interface DialogData {
+  //id: number;
+  //url: string;
+  flag: boolean;
+  photo: Photo;
+}
 
 @Component({
   selector: 'app-add-cards',
@@ -10,6 +17,10 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./add-cards.component.css']
 })
 export class AddCardsComponent {
+
+  //id: number;
+  //url: string;
+  flag: boolean;
 
   photosArray: Photo[] = [
     {id: 1, url: "https://material.angular.io/assets/img/examples/shiba2.jpg"},
@@ -25,11 +36,18 @@ export class AddCardsComponent {
   openDialog(photo: Photo) {
 
     this.openForEdit(photo);
-    const dialogRef = this.dialog.open(DialogContentExampleDialog);
+    const dialogRef = this.dialog.open(DialogContentExampleDialog, {
+      //data: {id: this.selectedPhoto.id, url: this.selectedPhoto.url}
+      data: {photo: this.selectedPhoto, flag: this.flag}
+    });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.flag = result;
       console.log(`Dialog result: ${result}`);
+      if(this.flag)
+        this.delete();
     });
+    this.flag = false;
   }
 
   openForEdit(photo: Photo) {
@@ -45,11 +63,18 @@ export class AddCardsComponent {
   }
 
   delete() {
+    // this is for an alert to appear before deleting
+    /*
     if(confirm("Are you sure want to delete it?")) {
       this.photosArray = this.photosArray.filter(x => x != this.selectedPhoto);
       this.selectedPhoto = new Photo();
     }
+    this.selectedPhoto = new Photo();
+    */
+    this.photosArray = this.photosArray.filter(x => x != this.selectedPhoto);
+    this.selectedPhoto = new Photo();
   }
+
 
 }
 
@@ -57,4 +82,10 @@ export class AddCardsComponent {
   selector: 'dialog-content-example-dialog',
   templateUrl: 'dialog-content-example-dialog.html',
 })
-export class DialogContentExampleDialog {}
+export class DialogContentExampleDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<AddCardsComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+
+}

@@ -1,4 +1,4 @@
-<mat-grid-list cols="4" rowHeight="0.8:1">
+<mat-grid-list cols="3" rowHeight="1:1">
     
     <mat-grid-tile *ngFor="let photo of photosArray" [class.active]="photo == selectedPhoto">
         <mat-card class="example-card">
@@ -12,11 +12,6 @@
                 </mat-card-subtitle>
             </mat-card-header>
             <img [src]="photo.url" mat-card-image (click)="openDialog(photo)">
-            <mat-card-actions>
-                <button >Delete</button>
-                <button mat-button *ngIf="selectedPhoto.id !== 0" (click)="delete()">LIKE</button>
-                <button mat-button>SHARE</button>
-            </mat-card-actions>
         </mat-card>
         
     </mat-grid-tile>
