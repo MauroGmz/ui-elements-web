@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Photo } from '../../models/photo';
 
+import { MatDialog } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-add-cards',
   templateUrl: './add-cards.component.html',
@@ -17,6 +19,18 @@ export class AddCardsComponent {
   ];
 
   selectedPhoto: Photo = new Photo();
+
+  constructor(public dialog: MatDialog) {}
+
+  openDialog(photo: Photo) {
+
+    this.openForEdit(photo);
+    const dialogRef = this.dialog.open(DialogContentExampleDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   openForEdit(photo: Photo) {
     this.selectedPhoto = photo;
@@ -38,3 +52,9 @@ export class AddCardsComponent {
   }
 
 }
+
+@Component({
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'dialog-content-example-dialog.html',
+})
+export class DialogContentExampleDialog {}
