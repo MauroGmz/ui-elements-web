@@ -62,6 +62,15 @@ export class AddCardsComponent {
     this.selectedPhoto = new Photo();
   }
 
+  addDefault() {
+    this.selectedPhoto.url = "https://material.angular.io/assets/img/examples/shiba2.jpg";
+    if(this.selectedPhoto.id === 0) {
+      this.selectedPhoto.id = this.photosArray.length + 1;
+      this.photosArray.push(this.selectedPhoto);
+    }
+    this.selectedPhoto = new Photo();
+  }
+
   delete() {
     // this is for an alert to appear before deleting
     /*

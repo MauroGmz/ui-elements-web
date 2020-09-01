@@ -1,3 +1,16 @@
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi pariatur excepturi ad tempora adipisci. Placeat, at hic natus porro,
+     ullam quidem accusantium veritatis voluptatibus sed animi voluptatum incidunt quos tempore?</p>
+
+<button mat-raised-button
+    color="warn"
+    matTooltip="Add new default photo"
+    aria-label="Button that displays a tooltip when focused or hovered over"
+    (click)="addDefault()">
+    Add Image
+</button>
+
+<hr>
+
 <mat-grid-list cols="3" rowHeight="1:1">
     
     <mat-grid-tile *ngFor="let photo of photosArray" [class.active]="photo == selectedPhoto">
