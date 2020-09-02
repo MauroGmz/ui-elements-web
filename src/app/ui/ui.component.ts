@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ui.component.css']
 })
 export class UiComponent implements OnInit {
+  names: string[];
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit(): void {
   }

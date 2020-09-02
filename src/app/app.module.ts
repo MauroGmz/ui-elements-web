@@ -26,6 +26,7 @@ import { AppsComponent } from './apps/apps.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AddCardsComponent } from './apps/add-cards/add-cards.component';
 import { DialogContentExampleDialog } from './apps/add-cards/add-cards.component';
+import { ImagesListComponent } from './apps/images-list/images-list.component';
 
 const routes: Routes = [
   {
@@ -57,7 +58,8 @@ const routes: Routes = [
     UiComponent,
     AppsComponent,
     AddCardsComponent,
-    DialogContentExampleDialog
+    DialogContentExampleDialog,
+    ImagesListComponent
   ],
   imports: [
     BrowserModule,

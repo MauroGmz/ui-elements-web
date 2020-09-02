@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Photo } from '../models/photo';
+
+
 @Component({
   selector: 'app-apps',
   templateUrl: './apps.component.html',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppsComponent implements OnInit {
 
+  photosArray: Photo[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
 
 }

@@ -1,0 +1,28 @@
+<p>images-list works!</p>
+
+<div *ngIf="photosArray.length > 0">
+    <h4>Names</h4>
+    <table border="1">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>URL</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let photo of photosArray">
+          <td>
+            {{ photo.id }}
+          </td>
+          <td>
+            {{ photo.url }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button mat-raised-button
+    color="warn"
+    (click)="lengthView()">
+    View Length 
+</button>

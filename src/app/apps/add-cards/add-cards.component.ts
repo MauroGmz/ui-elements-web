@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input, Output, EventEmitter } from '@angular/core';
 
 import { Photo } from '../../models/photo';
 
@@ -22,12 +22,8 @@ export class AddCardsComponent {
   //url: string;
   flag: boolean;
 
-  photosArray: Photo[] = [
-    {id: 1, url: "https://material.angular.io/assets/img/examples/shiba2.jpg"},
-    {id: 2, url: "https://material.angular.io/assets/img/examples/shiba2.jpg"},
-    {id: 3, url: "https://material.angular.io/assets/img/examples/shiba2.jpg"},
-    {id: 4, url: "https://material.angular.io/assets/img/examples/shiba2.jpg"}
-  ];
+  @Input() photosArray: Photo[];
+  @Output() data: EventEmitter<Photo[]> = new EventEmitter<Photo[]>();
 
   selectedPhoto: Photo = new Photo();
 
@@ -48,6 +44,7 @@ export class AddCardsComponent {
         this.delete();
     });
     this.flag = false;
+    this.data.emit([]);
   }
 
   openForEdit(photo: Photo) {
@@ -69,6 +66,7 @@ export class AddCardsComponent {
       this.photosArray.push(this.selectedPhoto);
     }
     this.selectedPhoto = new Photo();
+    this.data.emit(this.photosArray);
   }
 
   delete() {
@@ -81,6 +79,9 @@ export class AddCardsComponent {
     this.selectedPhoto = new Photo();
     */
     this.photosArray = this.photosArray.filter(x => x != this.selectedPhoto);
+    for (let entry of this.photosArray) {
+      console.log(entry);
+    }
     this.selectedPhoto = new Photo();
   }
 
